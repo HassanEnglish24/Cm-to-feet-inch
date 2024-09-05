@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            font-family: sans-serif ;
+            height: 100vh;
+            margin: 0;
+        }
+        .converter {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: deeppink;
+            font-size: 22px ;
+            
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            border: 1.5px solid deeppink;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none ;
+            color: deeppink;
+        }
+        input[type="text"]::placeholder {
+          color: hotpink;
+        }
+        input[type="number"]::placeholder {
+          color: hotpink;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: deeppink;
+            box-shadow: 0px 5px 20px rgb(255, 20, 147, 0.40);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 85%;
+        }
+        button:hover {
+            background-color: deeppink;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        footer{
+          background: white;
+          width: 100%;
+          font-family: sans-serif;
+          position: absolute ;
+          bottom: 0px;
+          text-align: center ;
+          font-weight: bold ;
+          
+        }
+        #result{
+          font-size: 22px ;
+          text-align: center ;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="converter">
+        <h1>Ubadal Dhererkaaga Centimetreka ah feet iyo inch</h1>
+        <input type="text" id="nameInput" placeholder="Magacaaga"><br>
+        <input type="number" id="cmInput" placeholder="Dhererkaaga">
+        <br>
+        <button onclick="convert()">Convert</button>
+     
+    </div>
+
+   <p id="result"></p>
+
+<footer>
+  <p>Created by Hassan</p>
+  
+</footer>
+
+
+    <script>
+        function convert() {
+            let name = document.getElementById('nameInput').value;
+            let cm = document.getElementById('cmInput').value;
+
+            if (name === "" || cm === "" || cm <= 0) {
+                document.getElementById('result').innerHTML = "Fadlan gali magacaga iyo dhererkaaga centimeter ahaan labadaba.";
+                return;
+            }
+
+            let inches = cm / 2.54;
+            let feet = Math.floor(inches / 12);
+            let remainingInches = (inches % 12).toFixed(2);
+            
+            // Determine height category
+            let heightCategory;
+            if (cm < 160) {
+                heightCategory = "waadgaaban tahay";
+            } else if (cm >= 160 && cm <= 180) {
+                heightCategory = "waxaa tahay Dhexdhexaad ama average";
+            } else {
+                heightCategory = "waad dheer tahay";
+            }
+
+            document.getElementById('result').innerHTML = `${name}, waxaa tahay ${feet} feet iyo ${remainingInches} inches. ${heightCategory}.    `;
+        }
+    </script>
+
+</body>
+</html>
